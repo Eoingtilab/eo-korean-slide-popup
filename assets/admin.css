@@ -21,6 +21,10 @@
 .eoksp-image-preview{display:block;max-width:100%;height:auto}
 .eoksp-media-actions{display:flex;gap:8px;flex-wrap:wrap}
 .eoksp-tip{align-self:end;color:#64748b}
+.eoksp-html-editor-wrap label{display:block;margin-bottom:8px;font-weight:600}
+.eoksp-html-editor-wrap .wp-editor-wrap{margin-top:8px;background:#fff}
+.eoksp-html-editor-wrap .description{margin:8px 0 0;color:#64748b}
+.eoksp-html-editor{min-height:240px}
 .eoksp-help-box ul{padding-left:18px;list-style:disc}
 .eoksp-help-box li{margin-bottom:8px}
 .eoksp-preview-box .button-large{width:100%;justify-content:center}
@@ -32,6 +36,6 @@
 .eoksp-dashboard-card ol,.eoksp-dashboard-card ul{margin:0 0 16px 18px}
 .eoksp-dashboard-number{font-size:42px;font-weight:800;line-height:1;color:#0f172a;margin:6px 0 12px}
 @media (max-width: 960px){
-  .eoksp-grid-2,.eoksp-grid-3,.eoksp-grid-4,.eoksp-dashboard-cards{grid-template-columns:1fr}
-  .eoksp-media-box{flex-direction:column}
+	.eoksp-grid-2,.eoksp-grid-3,.eoksp-grid-4,.eoksp-dashboard-cards{grid-template-columns:1fr}
+	.eoksp-media-box{flex-direction:column}
 }
