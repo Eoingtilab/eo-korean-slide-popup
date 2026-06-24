@@ -16,6 +16,7 @@ This project aims to provide a simpler popup workflow for Korean websites:
 - Add multiple slides to one popup.
 - Use image, video, HTML, or KBoard URL content.
 - Write HTML slide content with the familiar WordPress editor instead of only raw code.
+- Display popups on all pages, only the home page, included pages, or excluded pages.
 - Control display period, audience, device, position, and priority.
 - Keep the front-end lightweight and reduce theme conflicts.
 
@@ -34,9 +35,10 @@ This project aims to provide a simpler popup workflow for Korean websites:
 - Priority-based popup queue
 - Desktop-only, mobile-only, or all-device display
 - Guest-only, member-only, or all-user display
-- Include or exclude specific pages by path or slug
+- All pages, home only, include rules, and exclude rules
 - Center, top, bottom, left, and right popup positioning
 - Custom width, max-width, radius, background, shadow, and overlay
+- Fade-in and fade-out popup animation
 - Open delay and auto-close
 - One-day hide button with cookie duration setting
 - Slider arrows, dots, loop, and autoplay options
@@ -48,6 +50,8 @@ When KBoard is installed, the plugin can use a KBoard post URL to create a card-
 Current KBoard card goals:
 
 - Resolve title, excerpt, and representative image from a KBoard URL
+- Try the KBoard class first, then fall back to the KBoard database table
+- Keep the original link usable even when the card data cannot be resolved
 - Support simple news-style and premium-style popup cards
 - Help Korean site operators promote board posts without manually recreating each popup
 
@@ -87,14 +91,14 @@ wp-content/plugins/eo-korean-slide-popup
 2. Enter the popup title.
 3. Add slide content.
 4. Choose content type: image, video, HTML, or KBoard URL card.
-5. Set display options such as date range, device, audience, and position.
+5. Set display options such as date range, device, audience, page visibility, and position.
 6. Publish the popup.
 
 For a simple event popup, use an image slide with a link URL.
 
-For a notice popup, use an HTML slide. The HTML slide field now supports the WordPress editor, so site managers can write headings, paragraphs, lists, links, and media without typing every tag manually.
+For a notice popup, use an HTML slide. The HTML slide field supports the WordPress editor, so site managers can write headings, paragraphs, lists, links, and media without typing every tag manually.
 
-For a KBoard announcement popup, use a KBoard post URL and select the KBoard card style.
+For a KBoard announcement popup, use a KBoard post URL and select the KBoard card style. If the plugin cannot resolve the KBoard title or content, the card still keeps the link and uses safe fallback text.
 
 ## HTML popup sample
 
@@ -107,6 +111,7 @@ examples/website-open-popup.html
 Recommended popup settings for the sample:
 
 - Slide type: HTML
+- Page visibility: Home only, if it is a main opening notice
 - Position: Center
 - Width: 640 to 720px
 - Overlay: On
@@ -114,6 +119,19 @@ Recommended popup settings for the sample:
 - Hide today button: On
 
 The sample uses the `.eoksp-open-popup` CSS class, which is styled by `assets/front.css`.
+
+## Recent development changes
+
+### 1.2.2 development preview
+
+- Added **Home only** page visibility mode.
+- Fixed checkbox saving so unchecked options remain unchecked after saving.
+- Improved popup radius and shadow application on the front-end dialog.
+- Added fade-in and fade-out open/close animation.
+- Reduced dot size and opacity.
+- Simplified arrow styling by removing hover background color and using opacity only.
+- Improved KBoard card fallback behavior.
+- Reorganized the admin settings UI into clearer cards.
 
 ## Current repository structure
 
@@ -142,13 +160,12 @@ eo-korean-slide-popup/
 
 ### Short-term cleanup
 
-- Standardize plugin version and stable tag
 - Improve admin UI wording and option grouping
-- Separate basic settings and advanced settings
 - Add screenshots and usage examples
 - Test the WordPress editor experience for HTML slides
 - Test with common Korean WordPress themes
 - Test with KBoard installations
+- Add safer migration handling for saved popup settings from earlier development versions
 
 ### Stable release goals
 
@@ -179,44 +196,21 @@ This plugin currently uses:
 - WordPress editor scripts for HTML slide editing
 - CSS custom properties for front-end styling
 
-The project is intentionally kept lightweight. Heavy slider libraries and complex page-builder dependencies are avoided unless they become necessary.
+## Security and privacy
 
-## Security and privacy notes
-
-- The plugin does not require an external API.
-- The plugin does not intentionally send visitor data to external services.
-- Video embeds may load third-party resources depending on the video URL used by the site operator.
-- KBoard URL cards are intended to resolve content from the same WordPress site.
-- HTML slide content is sanitized through WordPress post-content sanitization before rendering.
+- The plugin stores popup settings and slide content in WordPress post meta.
+- It does not intentionally send popup data to an external service.
+- KBoard URL cards are resolved locally where possible.
+- Site operators should avoid placing sensitive personal information in public popup content.
 
 ## Contributing
 
-Contributions are welcome after the first cleanup phase.
-
-Useful contribution areas:
-
-- WordPress coding standards cleanup
-- Accessibility improvements
-- Mobile UI testing
-- KBoard compatibility testing
-- Korean documentation improvements
-- Bug reports with theme/plugin conflict details
-
-When reporting a bug, please include:
-
-- WordPress version
-- PHP version
-- Theme name
-- KBoard version, if relevant
-- Browser/device
-- Steps to reproduce the issue
+This project is currently maintained as an early-stage open-source plugin. Issues, bug reports, UI suggestions, and KBoard compatibility notes are welcome.
 
 ## License
 
-This project is licensed under the GNU General Public License v2.0.
+GPLv2 or later.
 
 ## Korean summary
 
-EO Korean Slide Popup은 한국형 워드프레스 홈페이지 운영에 맞춘 가벼운 슬라이드 팝업 플러그인입니다. 이미지 팝업, 영상 팝업, 워드프레스 에디터 기반 HTML 공지 팝업, KBoard 게시글 카드 팝업을 지원하는 것을 목표로 합니다.
-
-현재는 초기 공개 버전이며, 안정 배포 전까지 코드 정리, 관리자 화면 개선, 문서화, KBoard 연동 테스트를 진행할 예정입니다.
+한국형 홈페이지 운영에 맞춘 워드프레스 슬라이드 팝업 플러그인입니다. 이미지, 영상, 워드프레스 에디터 HTML, KBoard 게시글 카드 팝업을 지원합니다. 현재는 개발 프리뷰 단계이며, 실사용 테스트와 관리자 UI 개선을 진행 중입니다.
