@@ -24,6 +24,16 @@
 .eoksp-html{width:100%;padding:22px;line-height:1.7;color:#fff;word-break:keep-all;overflow-wrap:anywhere;background:rgba(0,0,0,.34);border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.28)}
 .eoksp-html>*:first-child{margin-top:0}
 .eoksp-html>*:last-child{margin-bottom:0}
+.eoksp-open-popup{text-align:center;max-width:680px;margin:0 auto;color:#fff}
+.eoksp-open-popup-eyebrow{display:inline-flex;align-items:center;justify-content:center;margin:0 0 12px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.18);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.eoksp-open-popup h2{margin:0;font-size:clamp(28px,5vw,46px);line-height:1.18;letter-spacing:-.04em;color:#fff;word-break:keep-all}
+.eoksp-open-popup p{font-size:17px;line-height:1.75;color:rgba(255,255,255,.9);word-break:keep-all}
+.eoksp-open-popup ul{display:grid;gap:8px;max-width:440px;margin:18px auto 0;padding:0;list-style:none;text-align:left}
+.eoksp-open-popup li{position:relative;padding-left:22px;color:rgba(255,255,255,.92);line-height:1.65}
+.eoksp-open-popup li:before{content:'✓';position:absolute;left:0;top:0;color:#7dd3fc;font-weight:800}
+.eoksp-open-popup-actions{margin-top:24px!important}
+.eoksp-open-popup-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 22px;border-radius:999px;background:#fff;color:#0f172a!important;font-weight:800;text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.24)}
+.eoksp-open-popup-button:hover,.eoksp-open-popup-button:focus-visible{background:#e0f2fe;color:#0f172a!important}
 .eoksp-embed-wrap{position:relative;width:100%;padding-top:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 18px 46px rgba(0,0,0,.34)}
 .eoksp-embed-wrap iframe,.eoksp-video-tag{position:absolute;inset:0;width:100%;height:100%;border:0}
 .eoksp-video-tag{object-fit:contain;background:#000}
@@ -67,28 +77,28 @@
 .eoksp-preview-badge{position:absolute;top:-6px;right:0;z-index:3;padding:6px 10px;border-radius:999px;background:rgba(17,24,39,.88);color:#fff;font-size:12px;font-weight:700;letter-spacing:.01em}
 body.eoksp-lock-scroll{overflow:hidden}
 @media (max-width: 782px){
-  .eoksp-popup{padding:20px 12px}
-  .eoksp-dialog{width:min(var(--eoksp-width,720px),100vw);max-width:calc(100vw - 24px);max-height:94vh}
-  .eoksp-dialog-head{gap:12px;padding-top:22px;padding-bottom:14px}
-  .eoksp-dialog-title{font-size:clamp(24px,8vw,40px)}
-  .eoksp-head-actions{gap:6px}
-  .eoksp-meta-chip{min-height:28px;padding:0 10px;font-size:12px;border-radius:6px}
-  .eoksp-body.is-fixed-height{height:auto;max-height:72vh}
-  .eoksp-slide{padding:8px 28px 0}
-  .eoksp-nav{width:24px;height:52px;font-size:52px}
-  .eoksp-dots{margin-top:20px;gap:8px}
-  .eoksp-dot{width:14px;height:14px}
-  .eoksp-kboard-card{grid-template-columns:1fr}
-  .eoksp-kboard-thumb{min-height:180px}
-  .eoksp-kboard-text{padding:18px}
-  .eoksp-kboard-title{font-size:18px}
+	.eoksp-popup{padding:20px 12px}
+	.eoksp-dialog{width:min(var(--eoksp-width,720px),100vw);max-width:calc(100vw - 24px);max-height:94vh}
+	.eoksp-dialog-head{gap:12px;padding-top:22px;padding-bottom:14px}
+	.eoksp-dialog-title{font-size:clamp(24px,8vw,40px)}
+	.eoksp-head-actions{gap:6px}
+	.eoksp-meta-chip{min-height:28px;padding:0 10px;font-size:12px;border-radius:6px}
+	.eoksp-body.is-fixed-height{height:auto;max-height:72vh}
+	.eoksp-slide{padding:8px 28px 0}
+	.eoksp-nav{width:24px;height:52px;font-size:52px}
+	.eoksp-dots{margin-top:20px;gap:8px}
+	.eoksp-dot{width:14px;height:14px}
+	.eoksp-kboard-card{grid-template-columns:1fr}
+	.eoksp-kboard-thumb{min-height:180px}
+	.eoksp-kboard-text{padding:18px}
+	.eoksp-kboard-title{font-size:18px}
 }
 .eoksp-device-desktop{display:none}
 @media (min-width: 783px){
-  .eoksp-device-desktop.is-open{display:flex}
-  .eoksp-device-mobile{display:none!important}
+	.eoksp-device-desktop.is-open{display:flex}
+	.eoksp-device-mobile{display:none!important}
 }
 @media (max-width: 782px){
-  .eoksp-device-mobile.is-open{display:flex}
-  .eoksp-device-desktop{display:none!important}
+	.eoksp-device-mobile.is-open{display:flex}
+	.eoksp-device-desktop{display:none!important}
 }
