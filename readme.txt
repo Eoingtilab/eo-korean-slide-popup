@@ -10,7 +10,7 @@ License: GPLv2 or later
 가볍고 테마 충돌이 적은 한국형 슬라이드 팝업 플러그인입니다.
 
 == Description ==
-- 이미지, 유튜브/비메오/MP4 영상, HTML, KBoard URL 카드 슬라이드 지원
+- 이미지, 유튜브/비메오/MP4 영상, 워드프레스 에디터 기반 HTML, KBoard URL 카드 슬라이드 지원
 - 팝업별 개별 사이즈, 위치, 타이틀, 디자인, 자동닫기, 오버레이, 오늘 하루 숨김 지원
 - 여러 팝업 활성화 시 우선순위 순차 노출
 - KBoard가 설치된 사이트에서는 게시물 URL만으로 이미지/제목/본문 40자 카드 팝업 가능
@@ -26,6 +26,8 @@ License: GPLv2 or later
 = 1.2.1 =
 * GitHub 공개용 초기 정리
 * 메인 플러그인 버전과 Stable tag 통일
+* HTML 슬라이드에 워드프레스 기본 에디터 입력 방식 추가
+* examples/website-open-popup.html 샘플 추가
 
 = 1.0.0 =
 * 최초 배포
