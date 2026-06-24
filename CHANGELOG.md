@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented here.
 
+## 1.2.2 - Development preview
+
+- Added a **Home only** page visibility option.
+- Fixed checkbox persistence by saving hidden `0` values before each checkbox.
+- Improved popup settings UI with grouped setting cards and clearer field descriptions.
+- Improved KBoard card resolution with class-based lookup, database fallback, and safer fallback text.
+- Applied radius, background, and shadow settings to the actual popup dialog.
+- Added fade-in and fade-out animation for popup open and close.
+- Reduced bottom dot size and visual weight.
+- Removed arrow hover background color and changed arrow emphasis to opacity only.
+- Bumped plugin asset version to reduce stale CSS/JS cache during testing.
+
 ## 1.2.1 - Development preview
 
 - Published the initial GitHub repository structure.
