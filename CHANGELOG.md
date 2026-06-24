@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented here.
 
+## 1.2.3 - Development preview
+
+- Added installation notes for WordPress ZIP uploads.
+- Clarified that GitHub's default `Download ZIP` folder name may create a duplicate plugin folder.
+- Rebuilt the installable ZIP package with the correct root folder name: `eo-korean-slide-popup`.
+- Rechecked PHP syntax for all plugin PHP files.
+- Kept the 1.2.2 functional fixes in the installable package.
+
 ## 1.2.2 - Development preview
 
 - Added a **Home only** page visibility option.
