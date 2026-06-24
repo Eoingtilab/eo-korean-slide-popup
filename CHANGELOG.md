@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented here.
 
+## 1.2.4 - Development preview
+
+- Fixed media popup presentation so image and video slides no longer sit inside an unwanted white card background.
+- Applied border radius and shadow directly to image/video content in media mode.
+- Reduced dot size and hardened dot styles against theme button CSS conflicts.
+- Removed arrow background hover effects and changed arrows to opacity-only controls.
+- Improved media-mode title/actions as subtle floating chips instead of a full white title bar.
+- Refined admin settings UI with more spacing, card styling, and premium-looking form controls.
+- Improved frontend CSS namespacing and resets to reduce theme CSS conflicts.
+
 ## 1.2.3 - Development preview
 
 - Added installation notes for WordPress ZIP uploads.
