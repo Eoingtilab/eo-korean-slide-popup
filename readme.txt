@@ -4,7 +4,7 @@ Tags: popup, slider, modal, kboard, youtube, vimeo
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 
 가볍고 테마 충돌이 적은 한국형 슬라이드 팝업 플러그인입니다.
@@ -19,12 +19,19 @@ License: GPLv2 or later
 - 순수 CSS/JS 기반으로 테마 충돌 최소화
 
 == Installation ==
-1. 플러그인 업로드 후 활성화합니다.
-2. 관리자 메뉴의 슬라이드 팝업에서 새 팝업을 추가합니다.
-3. 슬라이드와 팝업 설정을 저장합니다.
-4. 공개 페이지에서 자동 노출됩니다.
+1. GitHub 기본 Download ZIP은 폴더명이 `eo-korean-slide-popup-main`으로 내려올 수 있으므로, 워드프레스 업로드용 ZIP은 최상위 폴더명이 반드시 `eo-korean-slide-popup`인지 확인합니다.
+2. 기존 버전을 교체할 때는 기존 `eo-korean-slide-popup` 폴더를 백업 또는 삭제한 뒤 업로드합니다.
+3. 플러그인 업로드 후 활성화합니다.
+4. 관리자 메뉴의 슬라이드 팝업에서 새 팝업을 추가합니다.
+5. 슬라이드와 팝업 설정을 저장합니다.
+6. 공개 페이지에서 자동 노출됩니다.
 
 == Changelog ==
+= 1.2.3 =
+* 워드프레스 설치용 ZIP 폴더명 문제 안내 추가
+* 기존 버전과 중복 설치되지 않도록 배포 패키지 기준 정리
+* 최종 테스트 전 버전 캐시 갱신용 버전 업데이트
+
 = 1.2.2 =
 * 홈 화면만 노출 옵션 추가
 * 체크박스 해제 후 저장 시 다시 체크되는 문제 수정
