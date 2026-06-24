@@ -21,16 +21,23 @@
 		document.cookie = name + '=' + encodeURIComponent(value) + expires + '; path=/; SameSite=Lax';
 	}
 
+	function applyPopupMode(popup){
+		if(!popup){return;}
+		var hasCardContent = !!popup.querySelector('.eoksp-html, .eoksp-kboard-card');
+		popup.classList.remove('eoksp-mode-media', 'eoksp-mode-card');
+		popup.classList.add(hasCardContent ? 'eoksp-mode-card' : 'eoksp-mode-media');
+	}
+
 	function openPopup(popup){
 		if(!popup){return;}
 
 		window.clearTimeout(closeTimer);
 		current = popup;
+		applyPopupMode(popup);
 		popup.hidden = false;
 		popup.classList.remove('is-closing');
 		popup.setAttribute('aria-hidden', 'false');
 
-		// Force a reflow so the fade-in transition starts reliably after hidden is removed.
 		void popup.offsetWidth;
 
 		popup.classList.add('is-open');
@@ -143,25 +150,29 @@
 		var prev = popup.querySelector('[data-prev]');
 		var next = popup.querySelector('[data-next]');
 
-		if(prev){
-			prev.addEventListener('click', popup._eokspPrevHandler = function(){
+		if(prev && !popup._eokspPrevHandler){
+			popup._eokspPrevHandler = function(){
 				prevSlide(popup);
 				startAutoplay(popup);
-			});
+			};
+			prev.addEventListener('click', popup._eokspPrevHandler);
 		}
 
-		if(next){
-			next.addEventListener('click', popup._eokspNextHandler = function(){
+		if(next && !popup._eokspNextHandler){
+			popup._eokspNextHandler = function(){
 				nextSlide(popup);
 				startAutoplay(popup);
-			});
+			};
+			next.addEventListener('click', popup._eokspNextHandler);
 		}
 
 		popup.querySelectorAll('[data-dot]').forEach(function(dot){
-			dot.addEventListener('click', function(){
+			if(dot._eokspDotHandler){return;}
+			dot._eokspDotHandler = function(){
 				goToSlide(popup, parseInt(dot.dataset.dot, 10));
 				startAutoplay(popup);
-			});
+			};
+			dot.addEventListener('click', dot._eokspDotHandler);
 		});
 
 		startAutoplay(popup);
@@ -169,25 +180,13 @@
 
 	function destroySlider(popup){
 		stopAutoplay(popup);
-
-		var prev = popup.querySelector('[data-prev]');
-		var next = popup.querySelector('[data-next]');
-
-		if(prev && popup._eokspPrevHandler){
-			prev.removeEventListener('click', popup._eokspPrevHandler);
-			popup._eokspPrevHandler = null;
-		}
-
-		if(next && popup._eokspNextHandler){
-			next.removeEventListener('click', popup._eokspNextHandler);
-			popup._eokspNextHandler = null;
-		}
 	}
 
 	document.addEventListener('DOMContentLoaded', function(){
 		var popups = Array.prototype.slice.call(document.querySelectorAll('.eoksp-queue-item'));
 
 		popups.forEach(function(popup){
+			applyPopupMode(popup);
 			var isPreview = popup.dataset.preview === '1';
 			if(!isPreview && getCookie('eoksp_hide_' + popup.dataset.popupId) === '1'){
 				return;
