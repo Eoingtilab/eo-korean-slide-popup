@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented here.
 
+## 1.2.6 - Development preview
+
+- Moved popup count, hide-today, and close controls below popup content and above slider dots.
+- Kept media popup headers as title-only so image/video popups do not get a heavy top bar.
+- Rebalanced media popup spacing, dots, arrows, and transparent control chips.
+- Bumped the installable package version to make WordPress replacement updates clearer.
+
 ## 1.2.5 - Development preview
 
 - Fixed unsupported video URLs being embedded as the current WordPress page.
