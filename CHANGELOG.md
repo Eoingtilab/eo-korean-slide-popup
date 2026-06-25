@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented here.
 
+## 1.2.5 - Development preview
+
+- Fixed unsupported video URLs being embedded as the current WordPress page.
+- Restricted video embeds to YouTube, Vimeo, and direct video files.
+- Restored media popup behavior so image/video content receives radius and shadow directly instead of the outer background.
+- Improved admin metabox spacing and removed the cramped left-edge visual treatment.
+- Rebuilt frontend spacing, dot, arrow, and title-chip styles to reduce theme CSS conflicts.
+
 ## 1.2.4 - Development preview
 
 - Fixed media popup presentation so image and video slides no longer sit inside an unwanted white card background.
