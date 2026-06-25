@@ -115,7 +115,8 @@ class Front {
 		));
 
 		$device = $settings['device'];
-		$classes = array('eoksp-popup', 'eoksp-position-' . $settings['position']);
+		$popup_mode = $this->get_popup_mode($slides);
+		$classes = array('eoksp-popup', 'eoksp-position-' . $settings['position'], 'eoksp-mode-' . $popup_mode);
 
 		if ($device !== 'all') {
 			$classes[] = 'eoksp-device-' . $device;
@@ -152,6 +153,7 @@ class Front {
 
 		$show_title_head = !empty($settings['title_bar']) || !empty($settings['show_close']) || (!empty($settings['hide_today']) && empty($args['preview_mode']));
 		$show_navigation = count($slides) > 1;
+
 		ob_start();
 		?>
 		<section
@@ -198,7 +200,7 @@ class Front {
 					<div class="eoksp-slides" data-slider>
 						<div class="eoksp-slides-track" data-slides-track>
 							<?php foreach ($slides as $index => $slide) : ?>
-								<article class="eoksp-slide" data-slide-index="<?php echo esc_attr($index); ?>">
+								<article class="eoksp-slide eoksp-slide-type-<?php echo esc_attr($slide['type'] ?? 'image'); ?>" data-slide-index="<?php echo esc_attr($index); ?>">
 									<?php echo $this->render_slide_content($slide, $settings); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 								</article>
 							<?php endforeach; ?>
@@ -224,6 +226,32 @@ class Front {
 		return ob_get_clean();
 	}
 
+	private function get_popup_mode($slides) {
+		foreach ($slides as $slide) {
+			$type = $slide['type'] ?? 'image';
+			if (in_array($type, array('html', 'kboard'), true)) {
+				return 'card';
+			}
+		}
+
+		return 'media';
+	}
+
+	private function is_supported_video_url($url) {
+		$url = (string) $url;
+		if ($url === '') {
+			return false;
+		}
+
+		$type = wp_check_filetype($url);
+		if (!empty($type['ext']) && in_array(strtolower($type['ext']), array('mp4', 'webm', 'ogg', 'ogv', 'mov', 'm4v'), true)) {
+			return true;
+		}
+
+		$host = strtolower((string) wp_parse_url($url, PHP_URL_HOST));
+		return in_array($host, array('youtu.be', 'www.youtu.be', 'youtube.com', 'www.youtube.com', 'm.youtube.com', 'music.youtube.com', 'vimeo.com', 'www.vimeo.com', 'player.vimeo.com'), true);
+	}
+
 	private function render_slide_content($slide, $settings) {
 		$type = $slide['type'] ?? 'image';
 		ob_start();
@@ -243,7 +271,11 @@ class Front {
 		}
 
 		if ($type === 'video') {
-			echo Helper::render_video_embed($slide['video_url'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			if ($this->is_supported_video_url($slide['video_url'] ?? '')) {
+				echo Helper::render_video_embed($slide['video_url'] ?? ''); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			} else {
+				echo '<p class="eoksp-empty">지원하지 않는 영상 URL입니다. YouTube, Vimeo 또는 mp4 파일 URL을 입력해 주세요.</p>';
+			}
 		}
 
 		if ($type === 'html') {
