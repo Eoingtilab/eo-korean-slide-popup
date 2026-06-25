@@ -28,12 +28,44 @@
 		popup.classList.add(hasCardContent ? 'eoksp-mode-card' : 'eoksp-mode-media');
 	}
 
+	function normalizeFooterControls(popup){
+		if(!popup){return;}
+		var dialog = popup.querySelector('.eoksp-dialog');
+		var body = popup.querySelector('.eoksp-body');
+		var dots = popup.querySelector('.eoksp-dots');
+		if(!dialog || !body){return;}
+
+		var footer = popup.querySelector('.eoksp-dialog-foot');
+		if(!footer){
+			footer = document.createElement('div');
+			footer.className = 'eoksp-dialog-foot';
+			dialog.insertBefore(footer, dots || body.nextSibling);
+		}
+
+		var slides = popup.querySelectorAll('.eoksp-slide');
+		if(slides.length > 1 && !footer.querySelector('.eoksp-count-chip')){
+			var count = document.createElement('span');
+			count.className = 'eoksp-meta-chip eoksp-count-chip';
+			count.textContent = '팝업 건수 : 총 ' + slides.length + '건';
+			footer.insertBefore(count, footer.firstChild);
+		}
+
+		var headActions = popup.querySelector('.eoksp-head-actions');
+		if(headActions){
+			while(headActions.firstChild){
+				footer.appendChild(headActions.firstChild);
+			}
+			headActions.parentNode.removeChild(headActions);
+		}
+	}
+
 	function openPopup(popup){
 		if(!popup){return;}
 
 		window.clearTimeout(closeTimer);
 		current = popup;
 		applyPopupMode(popup);
+		normalizeFooterControls(popup);
 		popup.hidden = false;
 		popup.classList.remove('is-closing');
 		popup.setAttribute('aria-hidden', 'false');
@@ -187,6 +219,7 @@
 
 		popups.forEach(function(popup){
 			applyPopupMode(popup);
+			normalizeFooterControls(popup);
 			var isPreview = popup.dataset.preview === '1';
 			if(!isPreview && getCookie('eoksp_hide_' + popup.dataset.popupId) === '1'){
 				return;
