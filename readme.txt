@@ -4,7 +4,7 @@ Tags: popup, slider, modal, kboard, youtube, vimeo
 Requires at least: 5.8
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 
 가볍고 테마 충돌이 적은 한국형 슬라이드 팝업 플러그인입니다.
@@ -28,6 +28,13 @@ License: GPLv2 or later
 GitHub 기본 Download ZIP은 `eo-korean-slide-popup-main` 폴더로 설치될 수 있습니다. 기존 플러그인을 업데이트하려면 최상위 폴더명이 `eo-korean-slide-popup`인 설치용 ZIP을 사용하세요.
 
 == Changelog ==
+= 1.2.5 =
+- 지원하지 않는 영상 URL이 현재 워드프레스 페이지로 임베드되는 문제 방지
+- 영상 임베드는 YouTube, Vimeo, 직접 영상 파일 URL로 제한
+- 이미지/영상형 팝업에서 이미지와 영상 자체에 라운드/쉐도우가 적용되도록 정리
+- 관리자 설정 화면 여백과 카드 UI 개선
+- 테마 버튼 CSS와 충돌하지 않도록 도트/화살표 스타일 보강
+
 = 1.2.4 =
 - 이미지/영상형 팝업에서 불필요한 흰 배경 박스가 생기던 구조 개선
 - 이미지와 영상 콘텐츠 자체에 라운드/쉐도우 적용
